@@ -8,6 +8,7 @@ import UnitDashboard from './Units/UnitDashboard';
 import UnitProfile from './Units/UnitProfile';
 import UnitOrders from './Units/UnitOrders';
 import UnitUsage from './Units/UnitUsage';
+import Items from './Items/Items';
 
 import Error from './Error'
 
@@ -23,6 +24,7 @@ function App() {
             <Route path ="/units/:unit/unitprofile" element={ <UnitProfile />}/>
             <Route path ="/units/:unit/unitorders" element={ <UnitOrders />}/>
             <Route path ="/units/:unit/unitusage" element={ <UnitUsage />}/>
+            <Route path ="/items" exact element={ <Items />}/>
             <Route path ="*" element={ <Error />}/>
           </Routes>
         </Router>

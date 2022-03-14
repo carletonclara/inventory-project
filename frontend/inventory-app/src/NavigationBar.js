@@ -13,6 +13,7 @@ function NavigationBar() {
                 <Navbar.Brand href="/">MyInventory</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/units">Units</Nav.Link>
+                    <Nav.Link href="/items">Items</Nav.Link>
                 </Nav>
             </Container> 
         </Navbar>
