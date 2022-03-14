@@ -31,6 +31,7 @@ function UnitUsage() {
                     <th>PS #</th>
                     <th>Current Par</th>
                     <th>3 Day Avg</th>
+                    <th>Turns</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@ function UnitUsage() {
                                 <td>{item.psnum}</td>
                                 <td>{item.par}</td>
                                 <td>{item.three_day_avg}</td>
+                                <td>{item.turns}</td>
                             </tr>
                         ))
                     }
