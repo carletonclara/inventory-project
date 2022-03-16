@@ -14,10 +14,11 @@ function Items() {
             <Table>
                 <thead>
                 <tr>
-                    <th>Unit</th>
-                    <th>Par Accuracy</th>
-                    <th>No. of Items</th>
-                    <th>Avg. Monthly Expenses</th>
+                    <th>PS #</th>
+                    <th>REF #</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>UOM</th>
                 </tr>
                 </thead>
                 <tbody>

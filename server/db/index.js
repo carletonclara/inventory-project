@@ -2,13 +2,22 @@ const dotenv = require('dotenv').config();
 const mysql = require('mysql');
 
 
+// const pool = mysql.createPool({
+//     connectionLimit: process.env.DB_CONLIMIT,
+//     password: process.env.DB_PASSWORD,
+//     user: process.env.DB_USER,
+//     database: process.env.DB_DATABASE,
+//     host: process.env.DB_HOST,
+//     port: process.env.DB_PORT
+// })
+
 const pool = mysql.createPool({
-    connectionLimit: process.env.DB_CONLIMIT,
-    password: process.env.DB_PASSWORD,
-    user: process.env.DB_USER,
-    database: process.env.DB_DATABASE,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT
+    connectionLimit: 10,
+    password: "test1234",
+    user: "inventoryTEST",
+    database: "dana_inventory",
+    host: "localhost",
+    port: 3306
 })
 
 let inventorydb = {};
@@ -92,7 +101,7 @@ inventorydb.unitUsage = (unit) => {
 
 inventorydb.allOrders = () => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT * FROM orders`, (err, results) => {
+        pool.query(`CALL select_all_orders()`, (err, results) => {
             if(err){
                 return reject(err);
             }
@@ -103,7 +112,7 @@ inventorydb.allOrders = () => {
 
 inventorydb.orderByPOMSR = (pomsr) => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT * FROM orderitems WHERE OrderID = (SELECT OrderID FROM orders WHERE POMSR = ?)`, [pomsr], (err, results) => {
+        pool.query(`CALL select_items_by_order(?)`, [pomsr], (err, results) => {
             if(err){
                 return reject(err);
             }

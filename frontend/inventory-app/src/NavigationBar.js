@@ -14,6 +14,7 @@ function NavigationBar() {
                 <Nav className="me-auto">
                     <Nav.Link href="/units">Units</Nav.Link>
                     <Nav.Link href="/items">Items</Nav.Link>
+                    <Nav.Link href="/orders">Orders</Nav.Link>
                 </Nav>
             </Container> 
         </Navbar>
