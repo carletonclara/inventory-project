@@ -46,7 +46,7 @@ function OrderItems() {
                                 <td>{orderitem.Qty}</td>
                                 <td>{orderitem.UOM}</td>
                                 <td>${orderitem.Cost}</td>
-                                <td>${orderitem.Qty * orderitem.Cost}</td>
+                                <td>${(orderitem.Qty * orderitem.Cost).toFixed(2)}</td>
                             </tr>
                         ))
                     }
