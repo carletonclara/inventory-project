@@ -22,9 +22,7 @@ function UnitDashboard() {
     }
 
     const formatXAxis = (tickItem) => {
-        console.log(tickItem);
         return new Date(tickItem).toLocaleDateString('en-US');
-        // return new Intl.DateTimeFormat('en-US').format(new Date(tickItem));
     }
     
     useEffect(() => {
