@@ -43,7 +43,7 @@ function UnitOrders() {
                                 <td>{new Intl.DateTimeFormat('en-US').format(new Date(order.TransDate))}
                                 </td>
                                 <td>{order.orderLines}</td>
-                                <td>${order.orderTotal}</td>
+                                <td>${(Math.round(order.orderTotal * 100) / 100).toFixed(2)}</td>
                             </tr>
                         ))
                     }
