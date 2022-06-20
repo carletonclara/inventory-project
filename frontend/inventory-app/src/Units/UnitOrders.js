@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Table from 'react-bootstrap/Table';
 
@@ -38,8 +39,8 @@ function UnitOrders() {
                     {
                         orders.map((order) => (
                             <tr key={order.OrderID}>
-                                <td>{order.POMSR}</td>
-                                <td>{new Intl.DateTimeFormat(['ban', 'id']).format(new Date(order.TransDate))}
+                                <td><Link to={`/orders/${order.POMSR}`}>{order.POMSR}</Link></td>
+                                <td>{new Intl.DateTimeFormat('en-US').format(new Date(order.TransDate))}
                                 </td>
                                 <td>{order.orderLines}</td>
                                 <td>${order.orderTotal}</td>
