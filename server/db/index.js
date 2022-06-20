@@ -1,23 +1,13 @@
 const dotenv = require('dotenv').config();
 const mysql = require('mysql');
 
-
-// const pool = mysql.createPool({
-//     connectionLimit: process.env.DB_CONLIMIT,
-//     password: process.env.DB_PASSWORD,
-//     user: process.env.DB_USER,
-//     database: process.env.DB_DATABASE,
-//     host: process.env.DB_HOST,
-//     port: process.env.DB_PORT
-// })
-
 const pool = mysql.createPool({
-    connectionLimit: 10,
-    password: "test1234",
-    user: "inventoryTEST",
-    database: "dana_inventory",
-    host: "localhost",
-    port: 3306
+    connectionLimit: process.env.DB_CONLIMIT,
+    password: process.env.DB_PASSWORD,
+    user: process.env.DB_USER,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT
 })
 
 let inventorydb = {};
