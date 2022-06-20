@@ -41,7 +41,7 @@ function Orders() {
                                 <td><Link to={`/orders/${order.POMSR}`}>{order.POMSR}</Link></td>
                                 <td>{new Intl.DateTimeFormat(['ban', 'id']).format(new Date(order.TransDate))}</td>
                                 <td>{order.orderLines}</td>
-                                <td>${(Math.round(order.orderTotal * 100) / 100).toFixed(2)}</td>
+                                <td>${order.orderTotal.toFixed(2)}</td>
                             </tr>
                         ))
                     }
