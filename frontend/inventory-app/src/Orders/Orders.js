@@ -26,6 +26,7 @@ function Orders() {
             <Table>
                 <thead>
                 <tr>
+                    <th>Unit</th>
                     <th>PO/MSR</th>
                     <th>Transaction Date</th>
                     <th>Total Lines</th>
@@ -36,6 +37,7 @@ function Orders() {
                     {
                         orders.map((order) => (
                             <tr key={order.OrderID}>
+                                <td><Link to={`/units/${order.unitName}`}>{order.unitName}</Link></td>
                                 <td><Link to={`/orders/${order.POMSR}`}>{order.POMSR}</Link></td>
                                 <td>{new Intl.DateTimeFormat(['ban', 'id']).format(new Date(order.TransDate))}</td>
                                 <td>{order.orderLines}</td>

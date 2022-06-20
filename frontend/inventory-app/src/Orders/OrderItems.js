@@ -30,8 +30,10 @@ function OrderItems() {
                     <th>PS #</th>
                     <th>REF #</th>
                     <th>Description</th>
-                    <th>Unit Price</th>
+                    <th>Quantity</th>
                     <th>UOM</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,8 +43,10 @@ function OrderItems() {
                                 <td>{orderitem.PSNum}</td>
                                 <td>{orderitem.REFNum}</td>
                                 <td>{orderitem.ItemDesc}</td>
-                                <td>${orderitem.Cost}</td>
+                                <td>{orderitem.Qty}</td>
                                 <td>{orderitem.UOM}</td>
+                                <td>${orderitem.Cost}</td>
+                                <td>${orderitem.Qty * orderitem.Cost}</td>
                             </tr>
                         ))
                     }
