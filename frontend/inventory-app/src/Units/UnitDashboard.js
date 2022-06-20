@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, DateTime } from 'recharts';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, DateTime, Tooltip  } from 'recharts';
 
 const API_HOST = "http://localhost:8080";
 const INVENTORY_API_URL = `${API_HOST}/inventory`;
@@ -19,39 +20,32 @@ function UnitDashboard() {
             .then(response => response.json())
             .then(data => setOrderLines(data[0]));
     }
+
+    const formatXAxis = (tickItem) => {
+        console.log(tickItem);
+        return new Date(tickItem).toLocaleDateString('en-US');
+        // return new Intl.DateTimeFormat('en-US').format(new Date(tickItem));
+    }
     
     useEffect(() => {
         fetchOrderLines();
-        console.log(orderLines);
     }, []);
 
     return (
         <div className="container">
             <h1>{ unit } Dashboard</h1>
-            <Container>
-                
-                <Row>
-                    <Col>
-                        <LineChart width={600} height={300} data={orderLines}>
-                            <Line type="monotone" dataKey="total" stroke="#8884d8" />
-                            <CartesianGrid stroke="#ccc" />
-                            <XAxis valueType="date" dataKey="TransDate" />
-                            <YAxis />
-                        </LineChart>
-                    </Col>
-                    <Col>
-                        <Row>
-                            <Link to={`/units/${unit}/unitprofile`}><Button variant="dark">Inventory Profile</Button></Link>
-                        </Row>
-                        <Row>
-                            <Link to={`/units/${unit}/unitusage`}><Button variant="dark">Usage</Button></Link>
-                        </Row>
-                        <Row>
-                            <Link to={`/units/${unit}/unitorders`}><Button variant="dark">Order History</Button></Link>
-                        </Row>    
-                    </Col>
-                </Row>
-            </Container>    
+            <ButtonGroup className="mb-2" variant="dark">
+                <Link to={`/units/${unit}/unitprofile`}><Button variant="dark">Inventory Profile</Button></Link>
+                <Link to={`/units/${unit}/unitusage`}><Button variant="dark">Usage</Button></Link>
+                <Link to={`/units/${unit}/unitorders`}><Button variant="dark">Order History</Button></Link>
+            </ButtonGroup>
+            <LineChart width={900} height={450} data={orderLines}>
+                <Line type="monotone" dataKey="total" stroke="#8884d8" />
+                <CartesianGrid stroke="#ccc" />
+                <XAxis valueType="date" dataKey="TransDate" tickFormatter={formatXAxis}/>
+                <YAxis />
+                <Tooltip />
+            </LineChart>
         </div>
     );
 }
