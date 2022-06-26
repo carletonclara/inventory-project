@@ -14,7 +14,7 @@ let inventorydb = {};
 
 inventorydb.allItems = () => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT * FROM items`, (err, results) => {
+        pool.query(`SELECT * FROM items ORDER BY PSNum`, (err, results) => {
             if(err){
                 return reject(err);
             }

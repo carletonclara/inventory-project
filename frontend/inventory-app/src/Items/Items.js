@@ -7,6 +7,17 @@ const API_HOST = "http://localhost:8080";
 const INVENTORY_API_URL = `${API_HOST}/inventory`;
 
 function Items() {
+    const [items, setItems] = useState([]);
+
+    const fetchItems = () => {
+        fetch(`${INVENTORY_API_URL}/items`)
+            .then(response => response.json())
+            .then(data => setItems(data));
+    }
+    
+    useEffect(() => {
+        fetchItems();
+    }, []);
     
     return (
         <div className="container">
@@ -22,16 +33,17 @@ function Items() {
                 </tr>
                 </thead>
                 <tbody>
-                    {/* {
-                        units.map((unit) => (
-                            <tr key={unit.UnitID}>
-                                <td><Link to={`/units/${unit.UnitName}`}>{unit.UnitName}</Link></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                    {
+                        items.map((item) => (
+                            <tr key={item.itemID}>
+                                <td><Link to={`/items/${item.PSNum}`}>{item.PSNum}</Link></td>
+                                <td>{item.REFNum}</td>
+                                <td>{item.ItemDesc}</td>
+                                <td>${item.Cost}</td>
+                                <td>{item.UOM}</td>
                             </tr>
                         ))
-                    } */}
+                    }
                 </tbody>
             </Table>
         </div>
