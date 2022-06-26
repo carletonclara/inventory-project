@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import Table from 'react-bootstrap/Table';
 
@@ -40,7 +40,7 @@ function UnitProfile() {
                     {
                         inventory.map((item) => (
                             <tr key={item.unit_item_id}>
-                                <td>{item.PSNum}</td>
+                                <td><Link to={`/items/${item.PSNum}`}>{item.PSNum}</Link></td>
                                 <td>{item.REFNum}</td>
                                 <td>{item.ItemDesc}</td>
                                 <td>${item.Cost}</td>

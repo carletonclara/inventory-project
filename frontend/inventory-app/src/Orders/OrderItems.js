@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import Table from 'react-bootstrap/Table';
 
@@ -40,7 +40,7 @@ function OrderItems() {
                     {
                         orderitems.map((orderitem) => (
                             <tr key={orderitem.order_item_id}>
-                                <td>{orderitem.PSNum}</td>
+                                <td><Link to={`/items/${orderitem.PSNum}`}>{orderitem.PSNum}</Link></td>
                                 <td>{orderitem.REFNum}</td>
                                 <td>{orderitem.ItemDesc}</td>
                                 <td>{orderitem.Qty}</td>

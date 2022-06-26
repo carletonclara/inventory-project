@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import Table from 'react-bootstrap/Table';
 
@@ -38,7 +38,7 @@ function UnitUsage() {
                     {
                         usage.map((item) => (
                             <tr key={item.unit_item_id}>
-                                <td>{item.psnum}</td>
+                                <td><Link to={`/items/${item.psnum}`}>{item.psnum}</Link></td>
                                 <td>{item.par}</td>
                                 <td>{item.three_day_avg}</td>
                                 <td>{item.turns}</td>
