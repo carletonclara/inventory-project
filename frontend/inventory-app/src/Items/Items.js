@@ -22,7 +22,7 @@ function Items() {
     return (
         <div className="container">
             <h1>Items</h1>
-            <Table>
+            <Table striped bordered hover>
                 <thead>
                 <tr>
                     <th>PS #</th>

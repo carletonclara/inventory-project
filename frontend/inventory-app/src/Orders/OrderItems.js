@@ -24,7 +24,7 @@ function OrderItems() {
     return (
         <div className="container">
             <h1>{pomsr}</h1>
-            <Table>
+            <Table striped bordered hover>
                 <thead>
                 <tr>
                     <th>PS #</th>
