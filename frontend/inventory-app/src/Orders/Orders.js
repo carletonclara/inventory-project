@@ -13,7 +13,6 @@ function Orders() {
         fetch(`${INVENTORY_API_URL}/orders`)
             .then(response => response.json())
             .then(data => setOrders(data[0]));
-        console.log(orders);
     }
     
     useEffect(() => {
@@ -39,7 +38,7 @@ function Orders() {
                             <tr key={order.OrderID}>
                                 <td><Link to={`/units/${order.unitName}`}>{order.unitName}</Link></td>
                                 <td><Link to={`/orders/${order.POMSR}`}>{order.POMSR}</Link></td>
-                                <td>{new Intl.DateTimeFormat(['ban', 'id']).format(new Date(order.TransDate))}</td>
+                                <td>{new Intl.DateTimeFormat('en-US').format(new Date(order.TransDate))}</td>
                                 <td>{order.orderLines}</td>
                                 <td>${order.orderTotal.toFixed(2)}</td>
                             </tr>
